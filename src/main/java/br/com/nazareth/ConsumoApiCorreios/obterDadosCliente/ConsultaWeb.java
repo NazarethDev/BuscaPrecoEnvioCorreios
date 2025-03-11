@@ -11,15 +11,12 @@ public class ConsultaWeb {
     private DadosDoEnvio dados;
     @Autowired
     private GeraUrlCorreios novaConsultaApi;
-
-    private ConsumoApi consumo = new ConsumoApi();
-    private ConverteDados conversor = new ConverteDados();
+    @Autowired
+    private ConsumoApi consumo;
+    @Autowired
+    private ConverteDados conversor;
 
     public void pesquisa (){
-        dados.obterDadosUsuario();
-        var novaBusca = novaConsultaApi.getUrlBusca();
-        System.out.println("URL da consulta: " + novaBusca);
-        var dadosNovaBusca = consumo.obterDados(novaBusca);
-        conversor.obterDados(dadosNovaBusca, RespostaCorreios.class);
+
     }
 }
