@@ -1,7 +1,11 @@
 package br.com.nazareth.ConsumoApiCorreios;
 
+import br.com.nazareth.ConsumoApiCorreios.consumo.ConsumoApi;
+import br.com.nazareth.ConsumoApiCorreios.consumo.ConverteDados;
 import br.com.nazareth.ConsumoApiCorreios.obterDadosCliente.ConsultaWeb;
 import br.com.nazareth.ConsumoApiCorreios.obterDadosCliente.DadosDoEnvio;
+import br.com.nazareth.ConsumoApiCorreios.obterDadosCliente.GeraUrlCorreios;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,11 +17,12 @@ public class ConsumoApiCorreiosApplication implements CommandLineRunner {
 		SpringApplication.run(ConsumoApiCorreiosApplication.class, args);
 	}
 
+		@Autowired
+		ConsultaWeb consultaWeb;
+
 	@Override
 	public void run(String... args) throws Exception {
 
-		ConsultaWeb novaConsulta = new ConsultaWeb();
-
-		novaConsulta.pesquisa();
+		consultaWeb.pesquisa();
 	}
 }

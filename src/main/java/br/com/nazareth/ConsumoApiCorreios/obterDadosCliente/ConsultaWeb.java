@@ -7,16 +7,23 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ConsultaWeb {
-    @Autowired
     private DadosDoEnvio dados;
-    @Autowired
     private GeraUrlCorreios novaConsultaApi;
-    @Autowired
     private ConsumoApi consumo;
-    @Autowired
     private ConverteDados conversor;
 
-    public void pesquisa (){
+    public ConsultaWeb(DadosDoEnvio dados, GeraUrlCorreios novaConsultaApi, ConsumoApi consumo, ConverteDados conversor) {
+        this.dados = dados;
+        this.novaConsultaApi = novaConsultaApi;
+        this.consumo = consumo;
+        this.conversor = conversor;
+    }
 
+    public void pesquisa (){
+        dados.obterDadosUsuario();
+        var novaBusca = novaConsultaApi.getUrlBusca();
+        System.out.println("URL da consulta: " + novaBusca);
+        var info = consumo.obterDados(novaBusca);
+        conversor.obterDados(info, RespostaCorreios.class);
     }
 }

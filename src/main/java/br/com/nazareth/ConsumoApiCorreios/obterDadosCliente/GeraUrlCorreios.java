@@ -9,15 +9,10 @@ public class GeraUrlCorreios {
     @Autowired
     private DadosDoEnvio dados;
 
-    public GeraUrlCorreios(DadosDoEnvio dados){
-        this.dados = dados;
-    }
 
     public String getUrlBusca() {
         return parametrosEnvio();
     }
-
-    private String urlBusca = parametrosEnvio();
 
         private String parametrosEnvio() {
             StringBuffer parametros = new StringBuffer();
